@@ -1,0 +1,218 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400&family=VT323&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    background: #eadcf7;
+    min-height: 100%;
+    font-family: 'VT323', sans-serif;
+}
+
+.wrap {
+    position: relative;
+    height: 100%;
+    min-height: 100%;
+}
+
+.modal-overlay {
+    background: rgba(129, 87, 189, 0.8);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+.modal {
+    position: relative;
+    width: 60%;
+    height: 300px;
+    max-height: 90%;
+    min-width: 60%;
+    min-height: 380px;
+    margin: 0 auto;
+    background: #a382c2;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 30px 10px;
+    border-radius: 20px;
+}
+
+.modal .winner {
+    font-size: 80px;
+    text-align: center;
+    color: #c41f75;
+    text-shadow: 0px 3px 0 mediumpurple;
+}
+
+.modal .restart {
+    margin: 70px auto;
+    padding: 20px 30px;
+    display: block;
+    font-size: 30px;
+    background: #78d5e3;
+    background: linear-gradient(#78d5e3, #0b8a9e);
+    border: 1px solid #0b8a9e;
+    border-radius: 5px;
+    color: #c41f75;
+    text-shadow: 0px 1px 0 #0b8a9e;
+    cursor: pointer;
+}
+
+.modal .restart:hover {
+    background: linear-gradient(#4b0b9e, deeppink);
+}
+
+.modal .message {
+    text-align: center;
+}
+
+@media (max-width: 870px) {
+    .modal {
+        min-height: 250px;
+        padding: 45px 0;
+    }
+
+    .modal .winner {
+        font-size: 60px;
+        margin-top: 0;
+
+    }
+
+    .modal .restart {
+        margin: 50px auto;
+        padding: 20px 30px;
+        font-size: 25px;
+    }
+}
+
+@media (max-width: 660px) {
+    .modal {
+        min-height: 250px;
+        padding: 20px 0;
+    }
+
+    .modal .winner {
+        font-size: 40px;
+    }
+
+    .modal .restart {
+        margin: 30px auto;
+        padding: 20px 30px;
+        font-size: 20px;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+    .modal {
+        height: 23%;
+        min-height: 23%;
+        padding: 20px 0 10px 0;
+    }
+
+    .modal .winner {
+        font-size: 30px;
+        margin: 0;
+    }
+
+    .modal .restart {
+        margin: 5px auto;
+        padding: 5px 10px;
+        font-size: 15px;
+    }
+
+    /*@media (min-width: 320px) and (max-width: 480px) {*/
+    /*    .modal .winner {*/
+    /*        font-size: 15px;*/
+    /*    }*/
+    /*}*/
+}
+
+    .game {
+        transform-style: preserve-3d;
+        perspective: 500px;
+        min-height: 100%;
+        height: 100%;
+        display: grid;
+        grid-template-columns: 22vh 22vh 22vh 22vh 22vh 22vh;
+        grid-template-rows: 22vh 22vh 22vh 22vh;
+        gap: 2vh;
+        justify-content: center;
+        padding: 3vh;
+    }
+
+    @media (min-width: 320px) and (max-width: 480px) {
+        .game {
+            grid-template-columns: 22vw 22vw 22vw 22vw;
+            grid-template-rows: 22vw 22vw 22vw 22vw 22vw 22vw ;
+            padding: 10vw 0.5vw;
+            gap: 1.5vw;
+        }
+    }
+
+
+.card {
+    border-radius: 20px;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    display: block;
+    perspective: 500px;
+    position: relative;
+    cursor: pointer;
+    z-index: 50;
+}
+
+.card .inside {
+    width: 100%;
+    height: 100%;
+    display: block;
+    transform-style: preserve-3d;
+    transition: 0.4s ease-in-out;
+    background: white;
+    border-radius: 20px;
+}
+
+.card .front,
+.card .back {
+    /*border: none;*/
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+}
+
+.card .front img,
+.card .back img {
+    max-width: 100%;
+    display: block;
+    margin: 0 auto;
+    max-height: 100%;
+    border-radius: 20px;
+}
+
+.card .back img {
+    opacity: 0.7;
+}
+
+.card .front {
+    transform: rotateY(-180deg);
+}
+
+.card .inside.picked,
+.card .inside.matched {
+    transform: rotateY(-180deg);
+}
